@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+
+
+    <title>WANDERLUST</title>
+</head>
+<body>
+   <%- include('header.ejs') %>
+   <div class="col-8 offset-2">
+    <h2>CREATE A NEW LISTING</h2> 
+    <p class="text-muted">Create a new listing to share your travel experiences with others.</p>
+  
+  <br> 
+
+    <div class="row">
+    <h3>Create a New Listing</h3>
+    <form method="POST" action="/listings" class="needs-validation" novalidate>
+      <div class="mb-3">
+      <labelfor="title" class="form-label" >Enter Title</label>
+      <input name="listing[title]" placeholder="enter title" type="text" class="form-control" required/>
+      <div class="invalid-feedback">
+        Title is required
+        </div>
+    </div>
+    <!-- <div class="mb-3" >
+        <labelfor="title" class="form-label"  >description</label >
+
+        <textarea
+        name="listing[description]"
+        class="form-control"
+       ></textarea >
+
+      </div required> -->
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+            id="description"
+            name="listing[description]"
+            class="form-control"
+            placeholder="Enter description"
+            required
+        ></textarea>
+        <div class="invalid-feedback">
+            Description is required
+        </div>
+    </div>
+     
+      
+      <div class="mb-3">
+        <labelfor="title" class="form-label" >Image-Url</label>
+
+        <input
+        name="listing[image][url]"
+        placeholder="enter image URL/Link"
+        type="text"
+        class="form-control"
+      />
+      <input 
+        type="hidden" 
+        name="listing[image][filename]" 
+        value="listingimage"
+    />
+
+      </div>
+      <div class="row">
+      <div class="mb-3 col-md-4">
+      <labelfor="title" class="form-label" >Price</label>
+
+      <input name="listing[price]" placeholder="enter price"  class="form-control" required />
+      <div class="invalid-feedback"> price is required</div>
+     </div>
+     <div class="mb-3 col-md-8">
+        <labelfor="title" class="form-label" >Country</label>
+        <input class="form-control" name="listing[country]" placeholder="enter country" type="text" required  />
+
+      </div> 
+    </div>
+      <div class="mb-3 ">  
+        <labelfor="title" class="form-label" >City</label required>
+        <input
+        name="listing[location]"
+        placeholder="enter location"
+        type="text" class="form-control" 
+        required />
+      </div>
+     
+      
+
+      <button type="submit" class="btn btn-secondary add-btn mt-3 ">Sumbit</button>
+
+    </form>
+  </div>   
+</div>
+<br> <br> 
+
+    <%- include("../includes/footer.ejs") %>
+
+
+    <script >
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+  </script>
+  
+
+
+</body>
+</html>
